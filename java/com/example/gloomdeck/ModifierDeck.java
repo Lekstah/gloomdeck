@@ -56,4 +56,21 @@ public class ModifierDeck {
     public int getRemaining(){
         return this.deck.size() - this.index;
     }
+
+    /**
+     * Calculatable attribute.
+     * Returns new ArrayList populated by all drawn cards
+     * Arranged by latest drawn to 1st drawn.
+     *
+     * @return
+     */
+    public ArrayList<Integer> getDrawnCards(){
+
+        ArrayList<Integer> drawnCards = new ArrayList();
+
+        for(int i = this.index - 1; i >= 0; i--)
+            drawnCards.add(this.deck.get(i));
+
+        return drawnCards;
+    }
 }
