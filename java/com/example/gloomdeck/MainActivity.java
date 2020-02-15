@@ -23,11 +23,11 @@ public class MainActivity extends AppCompatActivity implements DrawnCardAdapter.
     RecyclerView drawnCardsRecycler;
     RecyclerView itemRecyclerView;
 
-    DrawnCardAdapter cardsAdapter;
+    DrawnModifierAdapter cardsAdapter;
     DrawnCardAdapter itemsAdapter;
 
-    Button btnBless;
-    Button btnCurse;
+    ImageView btnBless;
+    ImageView btnCurse;
 
     ModifierDeck deck;
     Items items;
@@ -40,20 +40,19 @@ public class MainActivity extends AppCompatActivity implements DrawnCardAdapter.
         imageView = findViewById(R.id.deck_image_view);
         countView = findViewById(R.id.countView);
         shuffleButton = findViewById(R.id.shuffleButton);
-        btnBless = findViewById(R.id.button_bless);
-        btnCurse = findViewById(R.id.button_curse);
+        btnBless = findViewById(R.id.blessButton);
+        btnCurse = findViewById(R.id.curseButton);
 
         deck = new ModifierDeck();
         items = new Items();
 
-        cardsAdapter = new DrawnCardAdapter(new ArrayList<Integer>());
-        cardsAdapter.setDrawnCardClickListener(this);
+        cardsAdapter = new DrawnModifierAdapter(new ArrayList<Integer>());
         itemsAdapter = new DrawnCardAdapter(items.getItems());
         itemsAdapter.setDrawnCardClickListener(this);
 
         drawnCardsRecycler = findViewById(R.id.drawnCardsRecycler);
         drawnCardsRecycler.setHasFixedSize(true);
-        drawnCardsRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        drawnCardsRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true));
         drawnCardsRecycler.setAdapter(cardsAdapter);
 
         itemRecyclerView = findViewById(R.id.itemRecyclerView);
