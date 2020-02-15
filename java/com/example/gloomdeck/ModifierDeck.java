@@ -1,9 +1,6 @@
 package com.example.gloomdeck;
 
-import androidx.annotation.DrawableRes;
-
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class ModifierDeck {
@@ -11,13 +8,16 @@ public class ModifierDeck {
     ArrayList<Integer> deck;
     int index;
 
-    public static final int PLUS_ZERO = R.drawable.plus_zero;
-    public static final int PLUS_ONE = R.drawable.plus_one;
-    public static final int PLUS_TWO = R.drawable.plus_two;
-    public static final int MINUS_ONE = R.drawable.minus_one;
-    public static final int MINUS_TWO = R.drawable.minus_two;
-    public static final int MISS = R.drawable.miss;
-    public static final int TIMES_TWO = R.drawable.times_two;
+    public static final int PLUS_ZERO = R.drawable.card_plus_zero;
+    public static final int PLUS_ONE = R.drawable.card_plus_one;
+    public static final int PLUS_TWO = R.drawable.card_plus_two;
+    public static final int MINUS_ONE = R.drawable.card_minus_one;
+    public static final int MINUS_TWO = R.drawable.card_minus_two;
+    public static final int MISS = R.drawable.card_miss;
+    public static final int TIMES_TWO = R.drawable.card_times_two;
+    public static final int MOD_BLESS = R.drawable.card_mod_bless;
+    public static final int MOD_CURSE = R.drawable.card_mod_curse;
+    public static final int MOD_MINUS_ONE = R.drawable.card_mod_minus_one;
 
 
     public ModifierDeck() {
@@ -72,5 +72,13 @@ public class ModifierDeck {
             drawnCards.add(this.deck.get(i));
 
         return drawnCards;
+    }
+
+    public void addCard(Integer card) {
+        deck.add(card);
+    }
+
+    public void removeCard(Integer card) {
+        deck.remove(card);
     }
 }

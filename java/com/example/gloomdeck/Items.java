@@ -6,20 +6,20 @@ public class Items {
 
     public static final int itemResource[] = {
             0,
-            R.drawable.boots_of_striding,
-            R.drawable.winged_shoes,
-            R.drawable.hide_armor,
-            R.drawable.leather_armor,
-            R.drawable.cloak_of_invisibility,
-            R.drawable.eagle_eye_goggles,
-            R.drawable.iron_helmet,
-            R.drawable.heater_shield,
-            R.drawable.piercing_bow,
-            R.drawable.war_hammer,
-            R.drawable.poison_dagger,
-            R.drawable.minor_healing_potion,
-            R.drawable.minor_stamina_potion,
-            R.drawable.minor_power_potion
+            R.drawable.item_boots_of_striding,
+            R.drawable.item_winged_shoes,
+            R.drawable.item_hide_armor,
+            R.drawable.item_leather_armor,
+            R.drawable.item_cloak_of_invisibility,
+            R.drawable.item_eagle_eye_goggles,
+            R.drawable.item_iron_helmet,
+            R.drawable.item_heater_shield,
+            R.drawable.item_piercing_bow,
+            R.drawable.item_war_hammer,
+            R.drawable.item_poison_dagger,
+            R.drawable.item_minor_healing_potion,
+            R.drawable.item_minor_stamina_potion,
+            R.drawable.item_minor_power_potion
     };
 
     ArrayList<Integer> items;

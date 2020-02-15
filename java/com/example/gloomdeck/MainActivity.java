@@ -9,20 +9,25 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DrawnCardAdapter.DrawnCardClickListener {
 
     ImageView imageView;
     TextView countView;
     FloatingActionButton shuffleButton;
     RecyclerView drawnCardsRecycler;
     RecyclerView itemRecyclerView;
+
+    DrawnCardAdapter cardsAdapter;
+    DrawnCardAdapter itemsAdapter;
+
+    Button btnBless;
+    Button btnCurse;
 
     ModifierDeck deck;
     Items items;
@@ -32,32 +37,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imageView = findViewById(R.id.imageView);
+        imageView = findViewById(R.id.deck_image_view);
         countView = findViewById(R.id.countView);
         shuffleButton = findViewById(R.id.shuffleButton);
+        btnBless = findViewById(R.id.button_bless);
+        btnCurse = findViewById(R.id.button_curse);
 
         deck = new ModifierDeck();
         items = new Items();
 
+        cardsAdapter = new DrawnCardAdapter(new ArrayList<Integer>());
+        cardsAdapter.setDrawnCardClickListener(this);
+        itemsAdapter = new DrawnCardAdapter(items.getItems());
+        itemsAdapter.setDrawnCardClickListener(this);
+
         drawnCardsRecycler = findViewById(R.id.drawnCardsRecycler);
         drawnCardsRecycler.setHasFixedSize(true);
         drawnCardsRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        drawnCardsRecycler.setAdapter(new DrawnCardAdapter(new ArrayList()));
+        drawnCardsRecycler.setAdapter(cardsAdapter);
 
         itemRecyclerView = findViewById(R.id.itemRecyclerView);
         itemRecyclerView.setHasFixedSize(true);
         itemRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        itemRecyclerView.setAdapter(new DrawnCardAdapter(items.getItems()));
+        itemRecyclerView.setAdapter(itemsAdapter);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("asdasda", "henlo");
-                //imageView.setImageResource(deck.pop());
                 deck.pop();
-                drawnCardsRecycler.setAdapter(
-                        new DrawnCardAdapter(deck.getDrawnCards())
-                );
+//                drawnCardsRecycler.setAdapter(
+//                        new DrawnCardAdapter(deck.getDrawnCards())
+//                );
+                cardsAdapter.setDrawnCards(deck.getDrawnCards());
+                cardsAdapter.notifyItemInserted(0);
+                drawnCardsRecycler.scrollToPosition(0);
                 countView.setText("" + deck.getRemaining());
             }
         });
@@ -66,12 +79,40 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 deck.shuffle();
-                //imageView.setImageResource(R.drawable.mod_back);
-                drawnCardsRecycler.setAdapter(
-                        new DrawnCardAdapter(deck.getDrawnCards())
-                );
+//                drawnCardsRecycler.setAdapter(
+//                        new DrawnCardAdapter(deck.getDrawnCards())
+//                );
+                cardsAdapter.setDrawnCards(deck.getDrawnCards());
+                cardsAdapter.notifyDataSetChanged();
                 countView.setText("" + deck.getRemaining());
             }
         });
+
+        btnBless.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deck.addCard(deck.MOD_BLESS);
+                deck.shuffle();
+                cardsAdapter.setDrawnCards(deck.getDrawnCards());
+                cardsAdapter.notifyDataSetChanged();
+                countView.setText("" + deck.getRemaining());
+            }
+        });
+
+        btnCurse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deck.addCard(deck.MOD_CURSE);
+                deck.shuffle();
+                cardsAdapter.setDrawnCards(deck.getDrawnCards());
+                cardsAdapter.notifyDataSetChanged();
+                countView.setText("" + deck.getRemaining());
+            }
+        });
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Log.e("view onItemClick", "" + view.getParent().getClass() + " " + position);
     }
 }

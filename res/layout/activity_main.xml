@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:padding="8dp"
     android:orientation="vertical"
-    android:weightSum="100">
+    android:padding="8dp"
+    android:weightSum="100"
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,9 +15,9 @@
         android:layout_weight="50">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/itemRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:id="@+id/itemRecyclerView" />
+            android:layout_height="200dp" />
 
     </LinearLayout>
 
@@ -28,45 +28,68 @@
         android:orientation="vertical"
         android:weightSum="100">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_bless"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Add Bless" />
+
+            <Button
+                android:id="@+id/button_curse"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Add Curse" />
+
+        </LinearLayout>
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/drawnCardsRecycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="50"
             android:padding="8dp"
-            android:scrollbars="horizontal"/>
+            android:scrollbars="horizontal" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="50">
+
             <TextView
+                android:id="@+id/countView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="@+id/cardView"
                 android:text="20"
-                android:id="@+id/countView"
-                app:layout_constraintRight_toLeftOf="@id/cardView"/>
+                app:layout_constraintRight_toLeftOf="@id/cardView"
+                app:layout_constraintTop_toTopOf="@+id/cardView" />
 
             <androidx.cardview.widget.CardView
-                android:layout_margin="8dp"
+                android:id="@+id/cardView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_margin="8dp"
                 app:cardCornerRadius="25dp"
-                android:id="@+id/cardView"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:foreground="?android:selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:id="@+id/imageView"
-                    android:adjustViewBounds="true"
+                    android:id="@+id/deck_image_view"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/mod_back" />
+                    android:adjustViewBounds="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:selectableItemBackground"
+                    android:src="@drawable/card_mod_back" />
 
             </androidx.cardview.widget.CardView>
 
@@ -76,12 +99,11 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/holo_blue_bright"
                 app:backgroundTint="@android:color/holo_blue_dark"
-                app:layout_constraintRight_toLeftOf="@+id/cardView"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:srcCompat="@android:drawable/ic_popup_sync"
-                />
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/cardView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/ic_popup_sync" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

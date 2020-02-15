@@ -1,5 +1,7 @@
 package com.example.gloomdeck;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +15,42 @@ import java.util.ArrayList;
 public class DrawnCardAdapter extends RecyclerView.Adapter <DrawnCardAdapter.DrawnCardViewHolder> {
 
     private ArrayList<Integer> drawnCards;
+    private DrawnCardClickListener drawnCardClickListener;
 
-    public static class DrawnCardViewHolder extends RecyclerView.ViewHolder{
+    public DrawnCardAdapter(ArrayList<Integer> drawnCards){
+        this.drawnCards = drawnCards;
+    }
+
+    class DrawnCardViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public ImageView imageView;
 
-        DrawnCardViewHolder(View itemView){
+//        DrawnCardViewHolder(View itemView){
+//            super(itemView);
+//            imageView = itemView.findViewById(R.id.drawnCardImg);
+//        }
+
+        public DrawnCardViewHolder(@NonNull final View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.drawnCardImg);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (drawnCardClickListener != null) drawnCardClickListener.onItemClick(v, getAdapterPosition());
         }
     }
 
-    public DrawnCardAdapter(ArrayList<Integer> drawnCards){
+    public interface DrawnCardClickListener {
+        void onItemClick(View view, int position);
+    }
+
+    public void setDrawnCardClickListener(DrawnCardClickListener drawnCardClickListener) {
+        this.drawnCardClickListener = drawnCardClickListener;
+    }
+
+    public void setDrawnCards(ArrayList<Integer> drawnCards) {
         this.drawnCards = drawnCards;
     }
 
@@ -45,4 +71,5 @@ public class DrawnCardAdapter extends RecyclerView.Adapter <DrawnCardAdapter.Dra
     public int getItemCount() {
         return drawnCards.size();
     }
+
 }
