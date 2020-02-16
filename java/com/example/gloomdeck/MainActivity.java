@@ -63,14 +63,16 @@ public class MainActivity extends AppCompatActivity implements DrawnCardAdapter.
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deck.pop();
+                int pop = deck.pop();
 //                drawnCardsRecycler.setAdapter(
 //                        new DrawnCardAdapter(deck.getDrawnCards())
 //                );
-                cardsAdapter.setDrawnCards(deck.getDrawnCards());
-                cardsAdapter.notifyItemInserted(0);
-                drawnCardsRecycler.scrollToPosition(0);
-                countView.setText("" + deck.getRemaining());
+                if (pop > -1) {
+                    cardsAdapter.setDrawnCards(deck.getDrawnCards());
+                    cardsAdapter.notifyItemInserted(0);
+                    drawnCardsRecycler.scrollToPosition(0);
+                    countView.setText("" + deck.getRemaining());
+                }
             }
         });
 
@@ -91,9 +93,8 @@ public class MainActivity extends AppCompatActivity implements DrawnCardAdapter.
             @Override
             public void onClick(View v) {
                 deck.addCard(deck.MOD_BLESS);
-                deck.shuffle();
-                cardsAdapter.setDrawnCards(deck.getDrawnCards());
-                cardsAdapter.notifyDataSetChanged();
+//                cardsAdapter.setDrawnCards(deck.getDrawnCards());
+//                cardsAdapter.notifyDataSetChanged();
                 countView.setText("" + deck.getRemaining());
             }
         });
@@ -102,9 +103,8 @@ public class MainActivity extends AppCompatActivity implements DrawnCardAdapter.
             @Override
             public void onClick(View v) {
                 deck.addCard(deck.MOD_CURSE);
-                deck.shuffle();
-                cardsAdapter.setDrawnCards(deck.getDrawnCards());
-                cardsAdapter.notifyDataSetChanged();
+//                cardsAdapter.setDrawnCards(deck.getDrawnCards());
+//                cardsAdapter.notifyDataSetChanged();
                 countView.setText("" + deck.getRemaining());
             }
         });
