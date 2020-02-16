@@ -10,6 +10,10 @@ public class GloomClass {
         this.perks = perks;
     }
 
+    public String getClassName() {
+        return className;
+    }
+
     public PerkSet[] getPerks() {
         return perks;
     }
@@ -32,4 +36,6 @@ public class GloomClass {
                   new PerkSet(1, Perk.REMOVE_FOUR_PLUS_ZERO)
             }
     );
+
+    public static GloomClass[] classes = {MINDTHIEF, SPELLWEAVER};
 }

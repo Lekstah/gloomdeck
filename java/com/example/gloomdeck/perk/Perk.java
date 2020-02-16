@@ -9,18 +9,24 @@ import androidx.core.content.ContextCompat;
 
 import com.example.gloomdeck.R;
 
-public class Perk {
+public class Perk implements Comparable<Perk> {
 
+    String key;
     int[] toAdd;
     int[] toRemove;
     String[] words;
     int[] images;
 
-    public Perk(int[] toRemove, int[] toAdd, String[] words, int[] images) {
+    public Perk(String key, int[] toRemove, int[] toAdd, String[] words, int[] images) {
+        this.key = key;
         this.toAdd = toAdd;
         this.toRemove = toRemove;
         this.words = words;
         this.images = images;
+    }
+
+    public String getKey() {
+        return key;
     }
 
     public SpannableStringBuilder getDescription(Context context) {
@@ -47,6 +53,7 @@ public class Perk {
     }
 
     public static final Perk REMOVE_TWO_MINUS_ONES = new Perk(
+            "REMOVE_TWO_MINUS_ONES",
             new int[]{
                     R.drawable.card_minus_one,
                     R.drawable.card_minus_one
@@ -59,6 +66,7 @@ public class Perk {
     );
 
     public static final Perk REMOVE_FOUR_PLUS_ZERO = new Perk(
+            "REMOVE_FOUR_PLUS_ZERO",
             new int[]{
                     R.drawable.card_plus_zero,
                     R.drawable.card_plus_zero,
@@ -73,6 +81,7 @@ public class Perk {
     );
 
     public static final Perk REPLACE_TWO_PLUS_ONE_WITH_TWO_PLUS_TWO = new Perk(
+            "REPLACE_TWO_PLUS_ONE_WITH_TWO_PLUS_TWO",
             new int[]{
                     R.drawable.card_plus_one,
                     R.drawable.card_plus_one
@@ -89,6 +98,7 @@ public class Perk {
     );
 
     public static final Perk REPLACE_MINUS_TWO_WITH_PLUS_ZERO = new Perk(
+            "REPLACE_MINUS_TWO_WITH_PLUS_ZERO",
             new int[]{
                     R.drawable.card_minus_two
             },
@@ -103,6 +113,7 @@ public class Perk {
     );
 
     public static final Perk ADD_PLUS_TWO_ICE = new Perk(
+            "ADD_PLUS_TWO_ICE",
             new int[]{},
             new int[]{},
             new String[]{"Add one", "", "card"},
@@ -113,6 +124,7 @@ public class Perk {
     );
 
     public static final Perk ADD_TWO_ROLLING_PLUS_ONE = new Perk(
+            "ADD_TWO_ROLLING_PLUS_ONE",
             new int[]{},
             new int[]{},
             new String[]{"Add two", "", "cards"},
@@ -123,10 +135,15 @@ public class Perk {
     );
 
     public static final Perk EMPTY_PERK = new Perk(
+            "EMPTY_PERK",
             new int[]{},
             new int[]{},
             new String[]{},
             new int[]{}
     );
 
+    @Override
+    public int compareTo(Perk o) {
+        return this.key.compareTo(o.key);
+    }
 }

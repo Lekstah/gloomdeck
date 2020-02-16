@@ -1,5 +1,7 @@
-package com.example.gloomdeck.adapters;
+package com.example.gloomdeck;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,41 +10,24 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gloomdeck.R;
-
 import java.util.ArrayList;
 
-public class DrawnCardAdapter extends RecyclerView.Adapter <DrawnCardAdapter.DrawnCardViewHolder> {
+public class DrawnModifierAdapter extends RecyclerView.Adapter <DrawnModifierAdapter.DrawnCardViewHolder> {
 
     private ArrayList<Integer> drawnCards;
-    private DrawnCardClickListener drawnCardClickListener;
 
-    public DrawnCardAdapter(ArrayList<Integer> drawnCards){
+    public DrawnModifierAdapter(ArrayList<Integer> drawnCards){
         this.drawnCards = drawnCards;
     }
 
-    class DrawnCardViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class DrawnCardViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView imageView;
 
         public DrawnCardViewHolder(@NonNull final View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.drawnCardImg);
-            itemView.setOnClickListener(this);
+            imageView = itemView.findViewById(R.id.drawnModifierImg);
         }
-
-        @Override
-        public void onClick(View v) {
-            if (drawnCardClickListener != null) drawnCardClickListener.onItemClick(v, getAdapterPosition());
-        }
-    }
-
-    public interface DrawnCardClickListener {
-        void onItemClick(View view, int position);
-    }
-
-    public void setDrawnCardClickListener(DrawnCardClickListener drawnCardClickListener) {
-        this.drawnCardClickListener = drawnCardClickListener;
     }
 
     public void setDrawnCards(ArrayList<Integer> drawnCards) {
@@ -52,7 +37,7 @@ public class DrawnCardAdapter extends RecyclerView.Adapter <DrawnCardAdapter.Dra
     @NonNull
     @Override
     public DrawnCardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.drawn_card, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.drawn_modifier, parent, false);
         DrawnCardViewHolder dcvh = new DrawnCardViewHolder(v);
         return dcvh;
     }
