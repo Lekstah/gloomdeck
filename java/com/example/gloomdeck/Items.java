@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Items {
 
     public static final int itemResource[] = {
-            0,
+            R.drawable.back_item_card,
             R.drawable.item_boots_of_striding,
             R.drawable.item_winged_shoes,
             R.drawable.item_hide_armor,
@@ -27,6 +27,7 @@ public class Items {
     public Items(){
         this.items = new ArrayList();
 
+        items.add(itemResource[0]);
         items.add(itemResource[1]);
         items.add(itemResource[3]);
         items.add(itemResource[14]);

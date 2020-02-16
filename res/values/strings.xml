@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Gloom Deck</string>
+    
+    <string-array name="classes">
+        <item>Mindthief</item>
+        <item>Spellweaver</item>
+    </string-array>
 </resources>
