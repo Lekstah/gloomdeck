@@ -4,13 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.gloomdeck.adapters.DrawnCardAdapter;
+import com.example.gloomdeck.adapters.DrawnModifierAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements DrawnCardAdapter.
     ImageView imageView;
     TextView countView;
     FloatingActionButton shuffleButton;
+    FloatingActionButton manageModifiersButton;
     RecyclerView drawnCardsRecycler;
     RecyclerView itemRecyclerView;
 
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements DrawnCardAdapter.
         imageView = findViewById(R.id.deck_image_view);
         countView = findViewById(R.id.countView);
         shuffleButton = findViewById(R.id.shuffleButton);
+        manageModifiersButton = findViewById(R.id.settings_button);
         btnBless = findViewById(R.id.blessButton);
         btnCurse = findViewById(R.id.curseButton);
 
@@ -108,6 +112,18 @@ public class MainActivity extends AppCompatActivity implements DrawnCardAdapter.
                 countView.setText("" + deck.getRemaining());
             }
         });
+
+        manageModifiersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openModifierActivity();
+            }
+        });
+    }
+
+    public void openModifierActivity(){
+        Intent intent = new Intent(this, ModifierActivity.class);
+        startActivity(intent);
     }
 
     @Override

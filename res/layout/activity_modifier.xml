@@ -16,8 +16,7 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/classes"
-        android:prompt="Choose Class"/>
+        android:entries="@array/classes" />
 
     <TextView
         android:layout_marginTop="16dp"
@@ -25,7 +24,8 @@
         android:layout_height="wrap_content"
         android:text="Perks"/>
 
-    <FrameLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/perk_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
