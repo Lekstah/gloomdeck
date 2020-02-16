@@ -1,5 +1,7 @@
-package com.example.gloomdeck.adapters;
+package com.example.gloomdeck;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,8 +9,6 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.gloomdeck.R;
 
 import java.util.ArrayList;
 
@@ -24,6 +24,11 @@ public class DrawnCardAdapter extends RecyclerView.Adapter <DrawnCardAdapter.Dra
     class DrawnCardViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public ImageView imageView;
+
+//        DrawnCardViewHolder(View itemView){
+//            super(itemView);
+//            imageView = itemView.findViewById(R.id.drawnCardImg);
+//        }
 
         public DrawnCardViewHolder(@NonNull final View itemView) {
             super(itemView);
