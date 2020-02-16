@@ -11,12 +11,14 @@ import com.example.gloomdeck.R;
 
 public class Perk {
 
-    Instruction[] instructions;
+    int[] toAdd;
+    int[] toRemove;
     String[] words;
     int[] images;
 
-    public Perk(Instruction[] instructions, String[] words, int[] images) {
-        this.instructions = instructions;
+    public Perk(int[] toRemove, int[] toAdd, String[] words, int[] images) {
+        this.toAdd = toAdd;
+        this.toRemove = toRemove;
         this.words = words;
         this.images = images;
     }
@@ -30,7 +32,7 @@ public class Perk {
             if(i < images.length) {
 
                 Drawable drawable = ContextCompat.getDrawable(context, images[i]);
-                drawable.setBounds(0, 0, 68, 45);
+                drawable.setBounds(0, 0, 60, 60);
 
                 ssb.setSpan(
                         new ImageSpan(drawable),
@@ -45,38 +47,86 @@ public class Perk {
     }
 
     public static final Perk REMOVE_TWO_MINUS_ONES = new Perk(
-            new Instruction[]{
-                    new Instruction(false, R.drawable.card_minus_one),
-                    new Instruction(false, R.drawable.card_minus_one)
-            },
-            new String[]{
-                    "Remove two",
-                    "cards"
-            },
             new int[]{
+                    R.drawable.card_minus_one,
                     R.drawable.card_minus_one
+            },
+            new int[]{},
+            new String[]{ "Remove two", "cards" },
+            new int[]{
+                    R.drawable.symbol_minus_one
             }
     );
 
     public static final Perk REMOVE_FOUR_PLUS_ZERO = new Perk(
-            new Instruction[]{
-                    new Instruction(false, R.drawable.card_plus_zero),
-                    new Instruction(false, R.drawable.card_plus_zero),
-                    new Instruction(false, R.drawable.card_plus_zero),
-                    new Instruction(false, R.drawable.card_plus_zero)
+            new int[]{
+                    R.drawable.card_plus_zero,
+                    R.drawable.card_plus_zero,
+                    R.drawable.card_plus_zero,
+                    R.drawable.card_plus_zero
             },
-            new String[]{
-                    "Remove four",
-                    "cards"
+            new int[]{},
+            new String[]{ "Remove four", "cards" },
+            new int[]{
+                    R.drawable.symbol_plus_zero
+            }
+    );
+
+    public static final Perk REPLACE_TWO_PLUS_ONE_WITH_TWO_PLUS_TWO = new Perk(
+            new int[]{
+                    R.drawable.card_plus_one,
+                    R.drawable.card_plus_one
+            },
+            new int[]{
+                    R.drawable.card_plus_two,
+                    R.drawable.card_plus_two
+            },
+            new String[]{ "Replace two", "with two", "cards" },
+            new int[]{
+                    R.drawable.symbol_plus_one,
+                    R.drawable.symbol_plus_two
+            }
+    );
+
+    public static final Perk REPLACE_MINUS_TWO_WITH_PLUS_ZERO = new Perk(
+            new int[]{
+                    R.drawable.card_minus_two
             },
             new int[]{
                     R.drawable.card_plus_zero
+            },
+            new String[]{ "Replace one", "with one", "cards" },
+            new int[]{
+                    R.drawable.symbol_minus_two,
+                    R.drawable.symbol_plus_zero
+            }
+    );
+
+    public static final Perk ADD_PLUS_TWO_ICE = new Perk(
+            new int[]{},
+            new int[]{},
+            new String[]{"Add one", "", "card"},
+            new int[]{
+                    R.drawable.symbol_plus_two,
+                    R.drawable.ic_symbol_ice
+            }
+    );
+
+    public static final Perk ADD_TWO_ROLLING_PLUS_ONE = new Perk(
+            new int[]{},
+            new int[]{},
+            new String[]{"Add two", "", "cards"},
+            new int[]{
+                    R.drawable.ic_symbol_rolling,
+                    R.drawable.symbol_plus_one
             }
     );
 
     public static final Perk EMPTY_PERK = new Perk(
-            new Instruction[]{},
+            new int[]{},
+            new int[]{},
             new String[]{},
             new int[]{}
     );
+
 }

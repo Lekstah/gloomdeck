@@ -18,7 +18,11 @@ public class GloomClass {
             "Mindthief",
             new PerkSet[]{
                     new PerkSet(2, Perk.REMOVE_TWO_MINUS_ONES),
-                    new PerkSet(1, Perk.REMOVE_FOUR_PLUS_ZERO)
+                    new PerkSet(1, Perk.REMOVE_FOUR_PLUS_ZERO),
+                    new PerkSet(1, Perk.REPLACE_TWO_PLUS_ONE_WITH_TWO_PLUS_TWO),
+                    new PerkSet(1, Perk.REPLACE_MINUS_TWO_WITH_PLUS_ZERO),
+                    new PerkSet(2, Perk.ADD_PLUS_TWO_ICE),
+                    new PerkSet(2, Perk.ADD_TWO_ROLLING_PLUS_ONE)
             }
     );
 
