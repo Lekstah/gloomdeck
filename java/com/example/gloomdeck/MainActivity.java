@@ -68,9 +68,6 @@ public class MainActivity extends AppCompatActivity implements DrawnCardAdapter.
             @Override
             public void onClick(View v) {
                 int pop = deck.pop();
-//                drawnCardsRecycler.setAdapter(
-//                        new DrawnCardAdapter(deck.getDrawnCards())
-//                );
                 if (pop > -1) {
                     cardsAdapter.setDrawnCards(deck.getDrawnCards());
                     cardsAdapter.notifyItemInserted(0);
@@ -84,9 +81,6 @@ public class MainActivity extends AppCompatActivity implements DrawnCardAdapter.
             @Override
             public void onClick(View v) {
                 deck.shuffle();
-//                drawnCardsRecycler.setAdapter(
-//                        new DrawnCardAdapter(deck.getDrawnCards())
-//                );
                 cardsAdapter.setDrawnCards(deck.getDrawnCards());
                 cardsAdapter.notifyDataSetChanged();
                 countView.setText("" + deck.getRemaining());
@@ -97,8 +91,6 @@ public class MainActivity extends AppCompatActivity implements DrawnCardAdapter.
             @Override
             public void onClick(View v) {
                 deck.addCard(deck.MOD_BLESS);
-//                cardsAdapter.setDrawnCards(deck.getDrawnCards());
-//                cardsAdapter.notifyDataSetChanged();
                 countView.setText("" + deck.getRemaining());
             }
         });
@@ -107,8 +99,6 @@ public class MainActivity extends AppCompatActivity implements DrawnCardAdapter.
             @Override
             public void onClick(View v) {
                 deck.addCard(deck.MOD_CURSE);
-//                cardsAdapter.setDrawnCards(deck.getDrawnCards());
-//                cardsAdapter.notifyDataSetChanged();
                 countView.setText("" + deck.getRemaining());
             }
         });
